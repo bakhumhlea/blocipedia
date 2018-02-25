@@ -38,7 +38,16 @@ gem 'jbuilder', '~> 2.5'
 gem 'thor', '0.19.1'
 # use devise for authentication
 gem 'devise'
+# use pry-rails as rails console
+gem 'pry-rails'
+# to use 'has_secure_password'
+gem 'bcrypt'
 
 group :development do
   gem 'listen', '~> 3.0.5'
+end
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0'
+  gem 'rails-controller-testing'
 end
