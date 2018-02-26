@@ -9,8 +9,8 @@ class ConfirmationsMailer < Devise::Mailer
     opts[:reply_to] = 'info@blocipedia.com'
     super
     
-    ##@user = user
-     
+    ##@user = record
+    
     ##mail(to: @user.email, subject: "Confirm your email: #{@user.email}")
     
   end

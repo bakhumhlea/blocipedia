@@ -42,9 +42,14 @@ gem 'devise'
 gem 'pry-rails'
 # to use 'has_secure_password'
 gem 'bcrypt'
+# use figaro to store important data
+gem 'figaro', '1.0'
+# bootstrap gem
+gem 'bootstrap-sass'
 
 group :development do
   gem 'listen', '~> 3.0.5'
+  gem 'letter_opener'
 end
 
 group :development, :test do

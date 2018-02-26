@@ -1,0 +1,48 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+    font-family:'Merriweather',
+                'Nunito',
+                'Roboto',
+                'Quattrocento',
+                'Quattrocento Sans',
+                serif,
+                sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: black;
+}
+.alert {
+    margin-bottom: 0px;
+}
+.page-header {
+    position: relative;
+    top: 0px;
+    height: 54px;
+    width: 100%;
+    margin: 0;
+    padding: 5px 10px 5px 10px;
+    font-family: 'Merriweather', san-sarif;
+}
+.page-header .app-name {
+    font-family: 'Merriweather', san-sarif;
+    font-weight: 800;
+    font-size: 2.6rem;
+    margin: 8px 4px 0 0;
+}
+.page-header .user-profile {
+    margin: 4px 0 4px 0;
+}
+.page-header .user-avatar {
+    width: 35px;
+    height: 35px;
+    border: 2px solid #191c67;
+    border-radius: 50%;
+    margin: 0 4px 6px 0;
+}
+.page-header .user-info {
+    font-family: 'Roboto', sarif;
+    font-size: 1.4rem;
+    font-weight: 600;
+}

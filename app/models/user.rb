@@ -10,4 +10,8 @@ class User < ApplicationRecord
   def send_confirmation_instructions
     ConfirmationsMailer.confirmation_instructions(self, @token, {})
   end
+  
+  def confirmation_required?
+    false
+  end
 end
