@@ -3,14 +3,15 @@ class ConfirmationsMailer < Devise::Mailer
   include Devise::Controllers::UrlHelpers # Optional. eg. `confirmation_url`
   default template_path: 'devise/mailer' # to make sure that your mailer uses the devise views
   
-  def confirmation_instructions(user)
+  def confirmation_instructions(record, token, opts={})
     headers["Custom-header"] = "Confirm Your Email"
-    headers["In-Reply-To"] = "<no-reply@blocipedia.com>"
-    
-    @user = user
-     
-    mail(to: @user.email, subject: "Confirm your email: #{@user.email}")
-    
+    opts[:from] = 'bakhumhlea@hotmail.com'
+    opts[:reply_to] = 'info@blocipedia.com'
     super
+    
+    ##@user = user
+     
+    ##mail(to: @user.email, subject: "Confirm your email: #{@user.email}")
+    
   end
 end
