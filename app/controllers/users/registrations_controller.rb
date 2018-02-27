@@ -11,14 +11,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    @user = User.new
-    @user.username = params[:user][:username]
-    @user.email = params[:user][:email]
-    @user.password = params[:user][:password]
-    @user.password_confirmation = params[:user][:password_confirmation]
+    @user = User.new(user_params)
     
     if @user.save
-      flash[:notice] = "Welcome #{@user.name}!"
+      flash[:notice]
       redirect_to root_path
     else
       flash.now[:alert] = "There was an error creating your account. Please try again."
@@ -28,18 +24,35 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/edit
   def edit
-    super
+    @user = current_user
   end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    @user = current_user
+    @user.assign_attributes(user_params)
+    
+    if @user.update
+      flash[:notice]
+      redirect_to root_path
+    else
+      flash.now[:alert] = "Can not update your account. Please try again."
+      render :edit
+    end
+  end
 
   # DELETE /resource
-  # def destroy
-  #   super
-  # end
+  def destroy
+    @user = current_user
+
+    if @user.destroy
+      flash[:notice]
+      redirect_to root_path
+    else
+      flash.now[:alert] = "Can not delete your account. Please contact info@blocipedia.com."
+      render :edit
+    end
+  end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
@@ -71,4 +84,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  private
+  
+  def user_params
+    params.require(:user).permit(:username, :email, :password, :password_confirmation)
+  end
 end
