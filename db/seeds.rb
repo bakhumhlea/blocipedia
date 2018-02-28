@@ -1,34 +1,49 @@
-require 'random_data'
-
-5.times do
-    name = RandomData.random_name
-    num = rand(100..999)
+require 'faker'
+             
+##locations = [Faker::StarWars.planet,
+##             Faker::Space.galaxy
+##            ]
+            
+8.times do
+    usernames = [Faker::WorldOfWarcraft.unique.hero,
+             Faker::StarWars.unique.character,
+             Faker::DragonBall.unique.character
+             ]
+    name = usernames[rand(0..usernames.length-1)]
+    email = Faker::Internet.free_email
     User.create!(
         username: name,
-        email: "#{name.downcase}_#{rand(1..99)}@mail.com",
-        password: "#{name.downcase}#{num}"
+        email: email,
+        password: "12345678"
     )
 end
-
+names = ["Kujo Joutarou", "Winsmoke Sanji"]
 admin = User.create!(
-   username: 'Kujo Joutaro',
-   email:    'admin@email.com',
+   username: names[0],
+   email:    "joutaro_kujo@morioh.com",
    password: '12345678',
    role:     'admin'
 )
 
 premium = User.create!(
-   username: 'Roronoa Zolo',
-   email:    'premium@email.com',
-   password: '12345678'
+   username: names[1],
+   email:    "sanji_3@northblue.com",
+   password: '12345678',
+   role:     'premium'
 )
 
 users = User.all
 
-50.times do
+60.times do
+    topics = [  Faker::StarWars.quote,
+                Faker::BackToTheFuture.quote, 
+                Faker::LeagueOfLegends.quote,
+                Faker::HarryPotter.quote,
+                Faker::WorldOfWarcraft.quote
+                ]
     Wiki.create!(
-        title:  RandomData.random_sentence,
-        body:   RandomData.random_paragraph,
+        title:  topics[rand(0..topics.length-1)],
+        body:   Faker::Hipster.paragraphs.join(' '),
         private: false,
         user: users.sample
     )
@@ -39,3 +54,4 @@ puts "#{Wiki.count} wikis created"
 puts "#{User.count} users created"
 puts "#{admin.username} is comming!"
 puts "#{premium.username} will slash you!"
+puts "ex. #{users.sample.email}"

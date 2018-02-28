@@ -23,7 +23,7 @@
   <div class="page-header">
     <div class="user-profile pull-left">
     <% if user_signed_in? %>
-      <%= image_tag 'https://static.foba1.com/bilder/spieler/gross/327539.jpg', class: "user-avatar" %>
+      <%= image_tag current_user.avatar_generator, class: "user-avatar" %>
         <span class="user-info">Signed in as: </span>
         <span>
           <%= link_to current_user.username, edit_user_registration_path, :class => 'user-info', :title => current_user.email  %> 

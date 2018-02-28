@@ -51,6 +51,8 @@ gem "factory_bot_rails", "~> 4.0"
 
 gem 'pundit'
 
+gem 'faker'
+
 group :development do
   gem 'listen', '~> 3.0.5'
   gem 'letter_opener'
