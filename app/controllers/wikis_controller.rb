@@ -1,4 +1,7 @@
 class WikisController < ApplicationController
+  
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  
   def index
     @wikis = Wiki.all
   end
@@ -15,10 +18,13 @@ class WikisController < ApplicationController
     @wiki = Wiki.new(wiki_params)
     @wiki.user = current_user
     
+    authorize @wiki
+    
     if @wiki.save
       redirect_to @wiki, notice: "Congret! Your Wiki has been created :D"
     else
-      flash.now[:alert] = "There was an error saving the wiki. Please try again."
+      message = @wiki.valid? ? "Error occur! Please try again." : "Invalid Input!"
+      flash.now[:alert] = message
       render :new
     end
   end
@@ -34,18 +40,21 @@ class WikisController < ApplicationController
     if @wiki.save
       redirect_to @wiki, notice: "Your contents has been updated :D"
     else
-      flash.now[:alert] = "There was an error saving the wiki. Please try again."
-      render :update
+      message = @wiki.valid? ? "Error occur! Please try again." : "Invalid Input!"
+      flash.now[:alert] = message
+      render :edit
     end
   end
 
   def destroy
     @wiki = Wiki.find(params[:id])
+    authorize @wiki
     
     if @wiki.destroy
-      redirect_to wikis_path, notice: "The wiki has been deleted :P"
+      redirect_to wikis_path, notice: "Wiki Id:#{@wiki.id} has been deleted :P"
     else
       flash.now[:alert] = "Error occur!, Can't delete your wiki :("
+      redirect_to @wiki
     end
   end
   
@@ -54,4 +63,12 @@ class WikisController < ApplicationController
   def wiki_params
     params.require(:wiki).permit(:title, :body, :private)
   end
+  
+  def user_not_authorized(exception)
+    policy_name = exception.policy.class.to_s.underscore
+    
+    flash[:alert] = t "#{policy_name}.#{exception.query}", scope: "pundit", default: :default
+    redirect_to(request.referrer || wikis_path)
+  end
+  
 end

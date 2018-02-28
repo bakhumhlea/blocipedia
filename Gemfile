@@ -49,6 +49,8 @@ gem 'bootstrap-sass'
 
 gem "factory_bot_rails", "~> 4.0"
 
+gem 'pundit'
+
 group :development do
   gem 'listen', '~> 3.0.5'
   gem 'letter_opener'

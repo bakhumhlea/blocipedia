@@ -7,6 +7,8 @@ class User < ApplicationRecord
   after_create :send_confirmation_instructions
   
   before_save { self.email = email.downcase if email.present? }
+  ##before_save { self.role ||= :standard }
+  after_initialize :init
 
   validates :username, length: { minimum: 1, maximum: 25 }, presence: true
 
@@ -17,8 +19,14 @@ class User < ApplicationRecord
              presence: true,
              uniqueness: { case_sensitive: false },
              length: { minimum: 3, maximum: 254 }
+  
+  enum role: [:standard, :premium, :admin]
 
   private
+  
+  def init
+    self.role ||= :standard
+  end
   
   def send_confirmation_instructions
     ConfirmationsMailer.confirmation_instructions(self, @token, {})

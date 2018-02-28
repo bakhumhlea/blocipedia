@@ -6,6 +6,9 @@
                 <div class="thumbnail">
                     <div class="caption">
                         <h3><%= wiki.title %></h3>
+                        <small>Author : <%= wiki.user.username %> | Publish : <%= time_ago_in_words(wiki.created_at) %> ago</small>
+                        <br/>
+                        <br/>
                         <p><%= wiki.body %></p>
                         <p>
                             <button class="btn btn-primary", role="button">

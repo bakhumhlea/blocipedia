@@ -9,8 +9,22 @@ require 'random_data'
         password: "#{name.downcase}#{num}"
     )
 end
+
+admin = User.create!(
+   username: 'Kujo Joutaro',
+   email:    'admin@email.com',
+   password: '12345678',
+   role:     'admin'
+)
+
+premium = User.create!(
+   username: 'Roronoa Zolo',
+   email:    'premium@email.com',
+   password: '12345678'
+)
+
 users = User.all
- 
+
 50.times do
     Wiki.create!(
         title:  RandomData.random_sentence,
@@ -23,3 +37,5 @@ end
 puts "Seed finished"
 puts "#{Wiki.count} wikis created"
 puts "#{User.count} users created"
+puts "#{admin.username} is comming!"
+puts "#{premium.username} will slash you!"

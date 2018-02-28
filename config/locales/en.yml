@@ -34,3 +34,8 @@ en:
       signed_in: "Welcome :)"
       signed_out: "Signed out successfully."
       already_signed_out: "Signed out successfully."
+  pundit:
+    default: 'You cannot perform this action.'
+    wiki_policy:
+      destroy?: 'You can only delete your own Wikis!'
+      create?: 'Only Premium user can create Wikis! Click here to Upgrade!'
