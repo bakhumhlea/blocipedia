@@ -30,14 +30,16 @@ body {
     font-weight: 800;
     font-size: 2.6rem;
     margin: 8px 4px 0 0;
+    color: black;
 }
 .page-header #glyphicon-king {
     top: 9px;
     font-size: 2.2rem;
     margin: 0 7px 0 0;
+    color: black;
 }
 .page-header .user-profile {
-    margin: 4px 0 4px 0;
+    margin: 4px 0 4px 6px;
 }
 .page-header .user-avatar {
     width: 35px;
@@ -50,4 +52,11 @@ body {
     font-family: 'Roboto', sarif;
     font-size: 1.4rem;
     font-weight: 600;
+}
+.wiki-main {
+    margin: 16px;
+}
+.wiki-head {
+    padding-bottom: 0px;
+    margin: 16px 16px 22px 16px;
 }

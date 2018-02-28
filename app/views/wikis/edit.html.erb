@@ -1,0 +1,25 @@
+<div class="wiki-main">
+    <h1>Wikis Editor</h1>
+    <h3><small>Created by <%= @wiki.user.username %></small></h3>
+    <%= form_for @wiki do |f| %>
+
+        <div class="form-group">
+        <%= f.label :title %><br />
+        <%= f.text_field :title, rows: 8, class: "form-control"  %>
+        </div>
+        
+        <div class="form-group">
+        <%= f.label :body %><br />
+        <%= f.text_area :body, rows: 8, class: "form-control"  %>
+        </div>
+        
+        <div class="form-group">
+        <span><%= f.check_box :private, class: "check-box"%></span><%= f.label :private, class: "label-private" %>
+        </div>
+        <div class="form-group">
+            <%= link_to "", wiki_path(@wiki.id), class: "btn btn-warning glyphicon glyphicon-chevron-left" %>
+            <%= f.submit "Confirm", class: "btn btn-success" %>
+            <%= link_to "Delete this Wiki!", @wiki, method: :delete, class: "btn btn-danger pull-right", data: { confirm: "Are you sure you want to delete this wiki?" } %></p>
+        </div>
+    <% end %>
+</div>

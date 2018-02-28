@@ -1,0 +1,28 @@
+<div class="wiki-main">
+    <h1>Wikis Creator</h1>
+    <h3><small>Writer <%= current_user.username %></small></h3>
+    <%= form_for @wiki do |f| %>
+
+        <div class="form-group">
+        <%= f.label :title %><br />
+        <%= f.text_field :title, rows: 8, class: "form-control", placeholder: "Your Title Here" %>
+        </div>
+        
+        <div class="form-group">
+        <%= f.label :body %><br />
+        <%= f.text_area :body, rows: 8, class: "form-control", placeholder: "Your Content Here" %>
+        </div>
+        
+        <div class="form-group">
+        <span><%= f.check_box :private, class: "check-box"%></span><%= f.label :private, class: "label-private" %>
+        </div>
+        <div class="form-group">
+            <%= link_to "", wikis_path, class: "btn btn-warning glyphicon glyphicon-chevron-left" %>
+            <% if params[:title] != nil && params[:body] != nil %>
+                <%= f.submit "Save", class: "btn btn-success" %>
+            <% else %>
+                <button class="btn btn-danger" disable="disable">Save</button>
+            <% end %>
+        </div>
+    <% end %>
+</div>

@@ -1,0 +1,6 @@
+<div class="wiki-main">
+    <h1><%= @wiki.title %></h1>
+    <p><%= @wiki.body %></p>
+    <%= link_to '', wikis_path, class: "btn btn-primary glyphicon glyphicon-chevron-left", title: "To Main Page" %>
+    <%= link_to '', edit_wiki_path, class: "btn btn-danger glyphicon glyphicon-pencil", title: "Edit" %>
+</div>

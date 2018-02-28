@@ -32,7 +32,9 @@
         <%= link_to "Sign In", new_user_session_path, :class => 'btn btn-primary'  %>
     <% end %>
     </div>
-    <h1 class="app-name pull-right">Blocipedia</h1><span id="glyphicon-king" class="glyphicon glyphicon-king pull-right" aria-hidden="true"></span>
+    <%= link_to(wikis_path||root_path) do %>
+      <h1 class="app-name pull-right">Blocipedia</h1><span id="glyphicon-king" class="glyphicon glyphicon-king pull-right" aria-hidden="true"></span>
+    <% end %>
   </div>
 
 <%= yield %>
