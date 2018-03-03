@@ -12,9 +12,21 @@ body {
     font-size: 16px;
     font-weight: 300;
     color: black;
+    background-image: url("hero_01.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: top;
+    background-size: 100%;
+    background-color: #010102;
 }
 .alert {
+    font-family: 'Quattrocento',sans-serif;
     margin-bottom: 0px;
+}
+.yield-canvas {
+    position: relative;
+    top: 0px;
+    padding: 16px;
 }
 .page-header {
     position: relative;
@@ -24,6 +36,16 @@ body {
     margin: 0;
     padding: 5px 10px 5px 10px;
     font-family: 'Merriweather', san-sarif;
+    background-color: #ffffff;
+}
+.page-header a {
+    text-decoration: none;
+}
+.page-header .app-logo-block {
+    width: 200px;
+    height: 50px;
+    margin: auto;
+    text-align: center
 }
 .page-header .app-name {
     font-family: 'Merriweather', san-sarif;
@@ -33,13 +55,18 @@ body {
     color: black;
 }
 .page-header #glyphicon-king {
-    top: 9px;
     font-size: 2.2rem;
     margin: 0 7px 0 0;
     color: black;
 }
 .page-header .user-profile {
     margin: 4px 0 4px 6px;
+}
+.page-header .user-profile div {
+    font-family: 'Roboto', sarif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 10px 0 0 0;
 }
 .page-header .user-avatar {
     width: 35px;
@@ -52,6 +79,42 @@ body {
     font-family: 'Roboto', sarif;
     font-size: 1.4rem;
     font-weight: 600;
+}
+.welcome-canvas {
+    position: relative;
+    text-align: center;
+    color: black;
+    width: 100%;
+    bottom: 0px;
+}
+.welcome-canvas div {
+    width: 230px;
+    height: 230px;
+    color: white;
+    border-radius: 50%;
+    background-color: #e9b056;
+    border: 6px solid white;
+    margin: 130px auto auto auto;
+}
+.welcome-canvas div #glyphicon-king {
+    font-size: 46px;
+    margin: 34px 0 5px 0;
+}
+.welcome-canvas div .name {
+    font-weight: 800;
+    margin: 5px 0 5px 0;
+}
+.welcome-canvas div p {
+    font-family: 'Mukta Malar', sans-serif;
+    font-size: 400;
+    margin: 0 auto 10px auto;
+    border-top: 2px solid white;
+    width: 188px;
+}
+.welcome-canvas .bg-credit {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
 }
 .wiki-main {
     margin: 16px;
@@ -82,4 +145,12 @@ body {
     border: 2px solid #ff3737;
     border-radius: 20%;
     margin: 0 4px 6px 0;
+}
+
+.field .form-field {
+    min-width: 400px;
+    font-family: 'Mukta Malar', sans-serif;
+    border-radius: 8px;
+    border-style: unset;
+    padding: 4px 8px 4px 8px;
 }

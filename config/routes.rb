@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   
   resources :wikis
+  
+  resources :user, only: :edit do
+    resources :charges, only: [:new, :update, :create]
+  end
 
   devise_for :users, controllers: { sessions: 'users/sessions', confirmations: 'confirmations' }
   # The priority is based upon order of creation: first created -> highest priority.

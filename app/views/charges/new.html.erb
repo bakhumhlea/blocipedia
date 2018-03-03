@@ -1,0 +1,40 @@
+<section class="yield-canvas">
+  <%= form_tag user_charges_path, id: 'chargeForm' do %>
+    <h2>Payment Information</h2> 
+    <script src="https://checkout.stripe.com/checkout.js"></script>
+    
+    <%= hidden_field_tag 'stripeToken' %>
+    <%= hidden_field_tag 'stripeEmail' %>
+    
+    <div>
+      <%= link_to "", edit_user_registration_path, class: "btn btn-warning glyphicon glyphicon-chevron-left" %>
+      <button class="btn btn-success" id="customButton">Purchase Premium</button>
+    </div>
+    
+    <script>
+      var handler = StripeCheckout.configure({
+        key: "<%= Rails.configuration.stripe[:publishable_key] %>",
+        image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+        locale: 'auto',
+        token: function(token) {
+          document.getElementById("stripeToken").value = token.id;
+          document.getElementById("stripeEmail").value = token.email;
+          document.getElementById("chargeForm").submit();
+        }
+      });
+      
+      document.getElementById('customButton').addEventListener('click', function(e) {
+        handler.open({
+          name: 'Blocipedia | Premium',
+          description: 'Premium Upgrade',
+          amount: <%= @amount_default %>
+        });
+        e.preventDefault();
+      });
+      
+      window.addEventListener('popstate', function() {
+        handler.close();
+      });
+    </script>
+    <% end %>
+</section>
