@@ -1,7 +1,26 @@
 <section class="yield-canvas">
 <div class="wiki-main">
     <h1>Wiki Editor</h1>
-    <h3><small>Created by <%= @wiki.user.username %></small></h3>
+    <h4>
+        <small>
+            <% if @wiki.user==current_user %>
+            Created by You
+            <% else %>
+            Created by <%= @wiki.user.username %>
+            <% end %>
+            <span> | </span>
+            <% if @collaborators.count > 0 %>
+                <span>Collaborator(s) : </span>
+                <% @collaborators.each do |col| %>
+                    <span class="del-col-btn">
+                        <span><%= find_user_in(col.user_id).username %><%= link_to "", wiki_collaborator_path(@wiki.id, col.id), method: :delete, class: "glyphicon glyphicon-remove" %></span>
+                    </span>
+                <% end %>
+            <% else %>
+                <span>No Collaborator</span>
+            <% end %>
+        </small>
+    </h4>
     <%= form_for @wiki do |f| %>
         <% if @wiki.errors.any? %>
             <div class="alert alert-danger">

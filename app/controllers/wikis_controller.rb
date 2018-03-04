@@ -9,6 +9,7 @@ class WikisController < ApplicationController
   
   def show
     @wiki = Wiki.find(params[:id])
+    @wiki_cols = User.where(id: @wiki.collaborators.pluck(:user_id))
   end
   
   def new
@@ -31,6 +32,7 @@ class WikisController < ApplicationController
 
   def edit
     @wiki = Wiki.find(params[:id])
+    @collaborators = @wiki.collaborators
   end
 
   def update
