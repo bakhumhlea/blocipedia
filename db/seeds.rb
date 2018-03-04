@@ -41,12 +41,13 @@ users = User.all
                 Faker::HarryPotter.quote,
                 Faker::WorldOfWarcraft.quote
                 ]
-    Wiki.create!(
+    wiki = Wiki.create!(
         title:  topics[rand(0..topics.length-1)],
         body:   Faker::Hipster.paragraphs.join(' '),
         private: false,
         user: users.sample
     )
+    wiki.update_attribute(:created_at, rand(10.minutes .. 1.year).ago)
 end
  
 puts "Seed finished"
