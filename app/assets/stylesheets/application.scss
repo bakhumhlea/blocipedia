@@ -12,26 +12,20 @@ body {
     font-size: 16px;
     font-weight: 300;
     color: black;
-    background-image: url("hero_01.jpg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: top;
-    background-size: 100%;
-    background-color: #010102;
+    background-color: #ccfffc;
 }
 .alert {
     font-family: 'Quattrocento',sans-serif;
     margin-bottom: 0px;
 }
 .yield-canvas {
-    position: relative;
-    top: 0px;
+    width: 100%;
     padding: 16px;
     background-color: white;
+    background-attachment: scroll;
 }
 .page-header {
     position: relative;
-    top: 0px;
     height: 54px;
     width: 100%;
     margin: 0;
@@ -82,11 +76,17 @@ body {
     font-weight: 600;
 }
 .welcome-canvas {
-    position: relative;
+    position: absolute;
     text-align: center;
     color: black;
-    width: 100%;
+    top: 50px;
     bottom: 0px;
+    width: 100%;
+    background-image: url("hero_01.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: top;
+    background-size: 100%;
 }
 .welcome-canvas div {
     width: 230px;
@@ -114,10 +114,23 @@ body {
 }
 .welcome-canvas .bg-credit {
     position: fixed;
+    font-family: 'Mukta Malar', sans-serif;
+    font-size: 12px;
+    font-weight: 200;
     bottom: 0px;
     right: 0px;
 }
+.wiki-index {
+    position: relative;
+    top: 0px;
+    width: 100%;
+    padding: 16px;
+    background-color: white;
+    background-attachment: scroll;
+}
 .wiki-main {
+    position: relative;
+    height: 100%;
     margin: 16px;
 }
 .wiki-head {
@@ -158,10 +171,8 @@ body {
     margin: 0 4px 6px 0;
 }
 
-.field .form-field {
+.field .form-control {
     min-width: 400px;
     font-family: 'Mukta Malar', sans-serif;
     border-radius: 8px;
-    border-style: groove;
-    padding: 4px 8px 4px 8px;
 }

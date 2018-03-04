@@ -1,4 +1,4 @@
-<section class="yield-canvas">
+<section class="wiki-index">
     <h1 class="wiki-head">Welcome to Blocipedia
         <div class="btn btn-success pull-right">
             <%= link_to(new_wiki_path) do %>
@@ -22,7 +22,7 @@
                             </small>
                             <br/>
                             <br/>
-                            <p><%= wiki.body %></p>
+                            <p><%= markdown(wiki.body) %></p>
                             <p>
                                 <button class="btn btn-primary", role="button">
                                     <span class="glyphicon glyphicon-bookmark" role="button"></span>
