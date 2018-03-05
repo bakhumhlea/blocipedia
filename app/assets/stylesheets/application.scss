@@ -24,6 +24,13 @@ body {
     background-color: white;
     background-attachment: scroll;
 }
+.yield-canvas .user-sessions {
+    width: 50%;
+    padding: 20px 40px 20px 40px;
+    border: 2px solid #cccccc;
+    border-radius: 10px;
+    margin: auto;
+}
 .page-header {
     position: relative;
     height: 54px;
@@ -150,7 +157,7 @@ body {
 .wiki-head-title {
     font-size: 36px;
     padding-bottom: 8px;
-    border-bottom: 8px solid #2dff95;
+    border-bottom: 2px solid #2dff95;
 }
 .wiki-head-detail {
     font-size: 16px;
@@ -159,7 +166,7 @@ body {
 .del-col-btn {
     color: white;
     background-color: #319c82;
-    padding: 3px 7px 1px 8px;
+    padding: 3px 4px 1px 8px;
     border: 1px solid #319c82;
     margin: 0px 2px 0px 2px;
     border-radius: 4px;
@@ -185,8 +192,15 @@ body {
     margin: 0 4px 6px 0;
 }
 
-.field .form-control {
-    min-width: 400px;
+.form-control {
+    min-width: 200px;
     font-family: 'Mukta Malar', sans-serif;
     border-radius: 8px;
+}
+.collaborator-add .search-col .form-control {
+    width: 300px;
+    margin: 8px 0 8px 0;
+}
+.collaborator-add .search-col input {
+    display: inline-block;
 }

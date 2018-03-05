@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
   
+  get 'downgrades/update'
+
   resources :wikis do
-    resources :collaborators, only: :destroy
+    resources :collaborators
   end
   
-  resources :user, only: :edit do
-    resources :charges, only: [:new, :update, :create]
-  end
+  resources :user
+  
+  resources :charges, only: [:new, :create]
 
   devise_for :users, controllers: { sessions: 'users/sessions', confirmations: 'confirmations' }
   # The priority is based upon order of creation: first created -> highest priority.

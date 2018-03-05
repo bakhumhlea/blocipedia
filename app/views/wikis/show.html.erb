@@ -16,6 +16,9 @@
                 <% else %>
                     <span>No Collaborator</span>
                 <% end %>
+                <% if @wiki.private? %>
+                    <span> | Private</span>
+                <% end %>
             </strong></small>
         </p>
         <p><%= markdown(@wiki.body) %></p>

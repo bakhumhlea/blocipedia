@@ -24,7 +24,7 @@
                 <%= f.text_area :body, rows: 8, class: "form-control", placeholder: "Your Content Here" %>
             <% end %>
             
-            <% if current_user.admin? || current_user.premium? %>
+            <% if current_user.admin? || (current_user.premium? && current_user == @wiki.user)%>
                 <div class="form-group">
                     <span><%= f.check_box :private, class: "check-box"%></span><%= f.label :private, class: "label-private" %>
                 </div>

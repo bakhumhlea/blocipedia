@@ -3,23 +3,38 @@
     <h1>Wiki Editor</h1>
     <h4>
         <small>
-            <% if @wiki.user==current_user %>
+            <% if @wiki.user == current_user %>
             Created by You
             <% else %>
             Created by <%= @wiki.user.username %>
             <% end %>
             <span> | </span>
-            <% if @collaborators.count > 0 %>
+            <% if @collaborators.any? %>
                 <span>Collaborator(s) : </span>
                 <% @collaborators.each do |col| %>
-                    <span class="del-col-btn">
-                        <span><%= find_user_in(col.user_id).username %><%= link_to "", wiki_collaborator_path(@wiki.id, col.id), method: :delete, class: "glyphicon glyphicon-remove" %></span>
-                    </span>
+                    <% if @wiki.user == current_user || current_user.admin? %>
+                        <span class="del-col-btn">
+                            <span><%= find_user_in(col.user_id).username %><%= link_to "", wiki_collaborator_path(@wiki, col), method: :delete, class: "glyphicon glyphicon-remove" %></span>
+                        </span>
+                    <% elsif col.user_id == current_user.id %>
+                        <span class="del-col-btn">
+                            <span><%= find_user_in(col.user_id).username %><%= link_to "", wiki_collaborator_path(@wiki, col), method: :delete, class: "glyphicon glyphicon-remove" %></span>
+                        </span>
+                    <% else %>
+                        <% if @collaborators.last == col %>
+                            <span> <%= find_user_in(col.user_id).username %></span>
+                        <% else %>
+                            <span> <%= find_user_in(col.user_id).username %>,</span>
+                        <% end %>
+                    <% end %>
                 <% end %>
             <% else %>
                 <span>No Collaborator</span>
             <% end %>
         </small>
+        <% if @wiki.user == current_user || current_user.admin? %>
+            <%= render partial: 'collaborators/collaborators', locals: { wiki: @wiki } %>
+        <% end %>
     </h4>
     <%= form_for @wiki do |f| %>
         <% if @wiki.errors.any? %>
@@ -42,10 +57,11 @@
             <%= f.label 'Content' %><br />
             <%= f.text_area :body, rows: 8, class: "form-control"  %>
         <% end %>
-        
-        <div class="form-group">
-            <span><%= f.check_box :private, class: "check-box"%></span><%= f.label :private, class: "label-private" %>
-        </div>
+        <% if current_user.admin? || (current_user.premium? && current_user == @wiki.user) %>
+            <div class="form-group">
+                <span><%= f.check_box :private, class: "check-box", value: ""%></span><%= f.label :private, class: "label-private" %>
+            </div>
+        <% end %>
         <div class="form-group">
             <%= link_to "", wiki_path(@wiki.id), class: "btn btn-warning glyphicon glyphicon-chevron-left" %>
             <%= f.submit "Confirm", class: "btn btn-success" %>

@@ -16,10 +16,10 @@
                             <h3><%= wiki.title %></h3>
                             <%= image_tag current_user.avatar_generator, class: "author-avatar" %>
                             <small>Author : <%= wiki.user.username %> | Published : <%= time_ago_in_words(wiki.created_at) %> ago | 
-                                <% if find_cols_in(wiki).count > 0 %>
+                                <% if find_cols_in(wiki).any? %>
                                     <span><%= pluralize(find_cols_in(wiki).count, 'Collaborator') %> : </span>
                                     <% find_cols_in(wiki).each do |col| %>
-                                        <% if col==find_cols_in(wiki).last %>
+                                        <% if col == find_cols_in(wiki).last %>
                                             <span><%= col.username %></span>
                                         <% else %>
                                             <span><%= col.username %>, </span>
@@ -28,7 +28,7 @@
                                 <% else %>
                                     <span>No Collaborator</span>
                                 <% end %>
-                                <% if wiki.private==true %>
+                                <% if wiki.private? %>
                                     <span> | Your Private Wiki</span>
                                 <% end %>
                             </small>

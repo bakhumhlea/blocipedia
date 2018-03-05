@@ -1,0 +1,10 @@
+<% if current_user.admin? || current_user.role == "premium" %>
+    <div class="collaborator-add">
+        <%= form_tag [wiki, Collaborator.new] do %>
+        <div class="search-col">
+            <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Add collaborator by email" %>
+            <%= submit_tag "Add", class: 'btn btn-success' %>
+        </div>
+        <% end %>
+    </div>
+<% end %>
