@@ -15,7 +15,7 @@ class ApplicationPolicy
   end
 
   def create?
-    true if user.premium? || user.admin?
+    true
   end
 
   def new?
