@@ -15,15 +15,15 @@ Blocipedia is my first Ruby application and on development, but shows my skill i
 
 Log in page
 
-![](app/assets/images/blocipidia_01.jpg)
+![](app/assets/images/blocipedia_01.jpg)
 
 After authenticated user credential the app will be redirect to wikis index page.
 
-![](app/assets/images/blocipidia_02.jpg)
+![](app/assets/images/blocipedia_02.jpg)
 
 Standard user can view and edit other wikis but only delete their own.
 
-![](app/assets/images/blocipidia_03.jpg)
+![](app/assets/images/blocipedia_03.jpg)
 
 ## Version
 v0.01
