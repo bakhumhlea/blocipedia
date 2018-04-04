@@ -32,4 +32,4 @@ v0.01
 You can checkout Pomotimer by follow this link [here](https://floating-fortress-24752.herokuapp.com/). 
 
 ## Sending Feedback
-I am always open to [your feedback](https://github.com/bakhumhlea/blocipidia/issues).
+I am always open to [your feedback](https://github.com/bakhumhlea/blocipedia/issues).
